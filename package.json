@@ -1,0 +1,11 @@
+{
+  "name": "react-js-tutorial",
+  "version": "1.0.0",
+  "description": "react js tutoril by LearnCode.academy",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
