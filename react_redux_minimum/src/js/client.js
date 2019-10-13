@@ -3,9 +3,9 @@ import { createStore } from "redux";
 const reducer = (state = 0, action) => {
   switch(action.type) {
     case "INC":
-      return state + 1;
+      return state + action.payload;
     case "DEC":
-      return state - 1;
+      return state - action.payload;
   }
   return state;
 }
@@ -19,8 +19,8 @@ store.subscribe(() => {
 });
 
 // NOTE: store.dispatch() StoreにAction を送信する
-store.dispatch({type: "INC"});
-store.dispatch({type: "INC"});
-store.dispatch({type: "INC"});
-store.dispatch({type: "INC"});
-store.dispatch({type: "DEC"});
+store.dispatch({type: "INC", payload: 1});
+store.dispatch({type: "INC", payload: 2});
+store.dispatch({type: "INC", payload: 22});
+store.dispatch({type: "INC", payload: 222});
+store.dispatch({type: "DEC", payload: 1000});
