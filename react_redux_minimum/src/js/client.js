@@ -4,6 +4,8 @@ const reducer = (state = 0, action) => {
   switch(action.type) {
     case "INC":
       return state + 1;
+    case "DEC":
+      return state - 1;
   }
   return state;
 }
@@ -18,3 +20,7 @@ store.subscribe(() => {
 
 // NOTE: store.dispatch() StoreにAction を送信する
 store.dispatch({type: "INC"});
+store.dispatch({type: "INC"});
+store.dispatch({type: "INC"});
+store.dispatch({type: "INC"});
+store.dispatch({type: "DEC"});
