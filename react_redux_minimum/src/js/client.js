@@ -1,7 +1,11 @@
 import { createStore } from "redux";
 
-const reducer = () => {
-  console.log("reducer has been called.");
+const reducer = (state = 0, action) => {
+  switch(action.type) {
+    case "INC":
+      return state + 1;
+  }
+  return state;
 }
 
 // NOTE: createStore() 初期化
