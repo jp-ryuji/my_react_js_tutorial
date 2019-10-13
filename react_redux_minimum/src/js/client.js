@@ -18,7 +18,7 @@ const logger = (store) => (next) => (action) => {
 
 const middleware = applyMiddleware(logger);
 
-const store = createStore(reducer, 1);
+const store = createStore(reducer, 1, middleware);
 
 store.dispatch({type: "INC"});
 store.dispatch({type: "INC"});
