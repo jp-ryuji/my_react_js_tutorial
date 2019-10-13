@@ -36,16 +36,16 @@ class TodoStore extends EventEmitter {
   }
 
   handleActions(action) {
-    console.log("TodoStore received an action", action);
-
+    switch(action.type) {
+      case "CREATE_TODO": {
+        this.createTodo(action.text);
+      }
+    }
   }
 }
 
 // NOTE: シングルトンにするために new してから export している。
 const todoStore = new TodoStore;
 dispatcher.register(todoStore.handleActions.bind(todoStore));
-
-// NOTE: dispatcher.dispatch を console から確認するためのテストコード
-window.dispatcher = dispatcher;
 
 export default todoStore;
