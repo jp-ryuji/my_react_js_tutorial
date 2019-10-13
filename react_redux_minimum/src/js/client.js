@@ -14,11 +14,16 @@ const reducer = (state = 0, action) => {
 
 const logger = (store) => (next) => (action) => {
   console.log("action fired", action);
+  next(action);
 }
 
 const middleware = applyMiddleware(logger);
 
 const store = createStore(reducer, 1, middleware);
+
+store.subscribe(() => {
+  console.log("store changed", store.getState());
+});
 
 store.dispatch({type: "INC"});
 store.dispatch({type: "INC"});
