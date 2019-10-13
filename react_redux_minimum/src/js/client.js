@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 
 const reducer = (state = 0, action) => {
   switch(action.type) {
@@ -11,6 +11,12 @@ const reducer = (state = 0, action) => {
   }
   return state;
 }
+
+const logger = (store) => (next) => (action) => {
+  console.log("action fired", action);
+}
+
+const middleware = applyMiddleware(logger);
 
 const store = createStore(reducer, 1);
 
