@@ -1,7 +1,25 @@
 import { EventEmitter } from "events";
 
 class TodoStore extends EventEmitter {
-  /* TODO: */
+  constructor() {
+    super();
+    this.todos = [
+      {
+        id: 113464613,
+        text: "Go Shopping",
+        complete: false
+      },
+      {
+        id: 235684679,
+        text: "Pay Bills",
+        complete: false
+      }
+    ];
+  }
+
+  getAll() {
+    return this.todos;
+  }
 }
 
 // NOTE: シングルトンにするために new してから export している。
