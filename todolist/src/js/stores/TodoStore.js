@@ -1,5 +1,7 @@
 import { EventEmitter } from "events";
 
+import dispatcher from "../dispatcher";
+
 class TodoStore extends EventEmitter {
   constructor() {
     super();
@@ -32,9 +34,18 @@ class TodoStore extends EventEmitter {
   getAll() {
     return this.todos;
   }
+
+  handleActions(action) {
+    console.log("TodoStore received an action", action);
+
+  }
 }
 
 // NOTE: シングルトンにするために new してから export している。
 const todoStore = new TodoStore;
+dispatcher.register(todoStore.handleActions.bind(todoStore));
+
+// NOTE: dispatcher.dispatch を console から確認するためのテストコード
+window.dispatcher = dispatcher;
 
 export default todoStore;
