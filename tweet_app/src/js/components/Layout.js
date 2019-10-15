@@ -8,7 +8,8 @@ import { fetchTweets } from "../actions/tweetsActions";
   return {
     user: store.userReducer.user,
     userFetched: store.userReducer.fetched,
-    tweets: store.tweetsReducer.tweets
+    tweets: store.tweetsReducer.tweets,
+    tweetsFetching: store.tweetsReducer.fetching
   };
 })
 export default class Layout extends React.Component {
@@ -19,7 +20,11 @@ export default class Layout extends React.Component {
     this.props.dispatch(fetchTweets());
   }
   render() {
-    const { user, tweets } = this.props;
+    const { user, tweets, tweetsFetching } = this.props;
+
+    if (tweetsFetching === true) {
+      return (<div>fetching...</div>);
+    }
 
     if (!tweets.length) {
       return <button onClick={this.fetchTweets.bind(this)}>load tweets</button>;
