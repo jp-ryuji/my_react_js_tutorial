@@ -15,8 +15,6 @@ export default class Layout extends React.Component {
     this.props.dispatch(fetchUser());
   }
   render() {
-    console.log(this.props.user);
-    console.log(this.props.userFetched);
-    return null;
+    return <h1>{this.props.user.name}</h1>;
   }
 }
